@@ -1,0 +1,38 @@
+:root {
+  --bg-color: #BDD0D0;
+  --fg-color: #AFBDC0;
+  --genre-color: #96BCC4;
+  --genretext-color: #095970;
+  --text-color: black;
+  --font-family: 'Arial, sans-serif';
+
+  /* padding */
+
+  --xs-padding: 0.25rem;
+  --sm-padding: 0.5rem;
+  --m-padding: 1rem;
+  --l-padding: 1.5rem;
+  --xl-padding: 2rem;
+}
+
+body {
+  background-color: var(--bg-color);
+}
+
+.btn {
+  border-radius: 1.5625rem;
+  padding: var(--sm-padding) var(--m-padding);
+}
+
+.highlight {
+  color: var(--genretext-color);
+  font-weight: bold;
+}
+
+.task-card__button {
+  background-color: var(--genre-color);
+  border: none;
+
+  
+}
+
