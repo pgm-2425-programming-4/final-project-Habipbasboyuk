@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "todos",
+  "info": {
+    "singularName": "todo",
+    "pluralName": "todos",
+    "displayName": "Todo",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "category": {
+      "type": "string",
+      "required": true,
+      "default": "Development"
+    },
+    "Task": {
+      "type": "text",
+      "required": true,
+      "unique": true
+    },
+    "Deadline": {
+      "type": "date",
+      "required": true
+    },
+    "Condition": {
+      "type": "enumeration",
+      "enum": [
+        "To do",
+        "In progress",
+        "Done"
+      ],
+      "default": "To do",
+      "required": true
+    }
+  }
+}
