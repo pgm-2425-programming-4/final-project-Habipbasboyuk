@@ -1,0 +1,9 @@
+.btn {
+  border-radius: 1.5625rem;
+  padding: var(--sm-padding) var(--l-padding);
+  border: none;
+}
+
+.btn-grey {
+    background-color: var(--fg-color);
+}

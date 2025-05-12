@@ -1,9 +1,18 @@
+@import url('./styles/button.css');
+@import url('./styles/header.css');
+@import url('./styles/task.css');
+@font-face {
+  font-family: 'Tilt-Warp';
+  src: url('./fonts/tilt_warp/TiltWarp-Regular-VariableFont_XROT,YROT.ttf') format('truetype');
+}
+
 :root {
   --bg-color: #BDD0D0;
   --fg-color: #AFBDC0;
   --genre-color: #96BCC4;
   --genretext-color: #095970;
   --text-color: black;
+  --light-text-color: #848484;
   --font-family: 'Arial, sans-serif';
 
   /* padding */
@@ -13,16 +22,24 @@
   --m-padding: 1rem;
   --l-padding: 1.5rem;
   --xl-padding: 2rem;
+
+  /* font-weight */
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-bold: 700;
+  --font-weight-black: 900;
 }
 
 body {
   background-color: var(--bg-color);
 }
 
-.btn {
-  border-radius: 1.5625rem;
-  padding: var(--sm-padding) var(--m-padding);
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Tilt-Warp';
+  color: var(--text-color);
 }
+
+
 
 .highlight {
   color: var(--genretext-color);
