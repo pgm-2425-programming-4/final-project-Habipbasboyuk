@@ -2,4 +2,29 @@
     display: flex;
     justify-content: center;
     margin-top: 5rem;
+
+    gap: 4rem;
+}
+
+.task__category {
+    text-align: center;
+}
+
+.task-card {
+
+    width: 15rem;
+    border: 2px solid var(--fg-color);
+    border-radius: var(--border-radius-xl);
+    padding: var(--m-padding) var(--l-padding);
+    line-height: 0.5rem;
+
+    .task-card__name, .task-card__date {
+        font-family: 'Spline Sans';
+        font-weight: var(--font-weight-regular);
+    }
+
+    .task-card__date {
+        color: var(--light-text-color);
+        margin-bottom: 0;
+    }
 }

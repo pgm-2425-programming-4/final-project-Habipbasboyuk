@@ -4,8 +4,8 @@ import "./App.css";
 function App() {
   return (
     <section className="task-container">
-      <div>
-        <p>To Do's</p>
+      <div className="task">
+        <p className="task__category btn btn-todo">To Do's</p>
 
         <article className="task-card">
           <button className="task-card__button btn">Development</button>
@@ -16,7 +16,7 @@ function App() {
       </div>
 
       <div>
-        <p>In progress</p>
+        <p className="task__category btn btn-in-progress">In progress</p>
 
         <article className="task-card">
           <button className="task-card__button btn">Development</button>
@@ -29,7 +29,7 @@ function App() {
       <div>
 
 
-        <p>Done</p>
+        <p className="task__category btn btn-done">Done</p>
 
         <article className="task-card">
 

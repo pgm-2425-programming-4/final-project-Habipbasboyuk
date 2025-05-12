@@ -7,3 +7,22 @@
 .btn-grey {
     background-color: var(--fg-color);
 }
+
+.btn-todo {
+    background-color: var(--todo-button-color);
+}
+
+.btn-in-progress {
+    background-color: var(--in-progress-button-color);
+}
+
+.btn-done {
+    background-color: var(--done-button-color);
+}
+
+.btn-todo, .btn-in-progress, .btn-done {
+    color: var(--fg-color);
+    width: max-content;
+    display: flex;
+    justify-self: center;
+}

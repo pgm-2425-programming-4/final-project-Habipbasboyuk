@@ -5,6 +5,11 @@
   font-family: 'Tilt-Warp';
   src: url('./fonts/tilt_warp/TiltWarp-Regular-VariableFont_XROT,YROT.ttf') format('truetype');
 }
+@font-face {
+  font-family: 'Spline-Sans';
+  src: url('./fonts/Spline_sans/SplineSans-VariableFont_wght.ttf')
+  format('truetype');
+}
 
 :root {
   --bg-color: #BDD0D0;
@@ -28,13 +33,26 @@
   --font-weight-regular: 400;
   --font-weight-bold: 700;
   --font-weight-black: 900;
+
+  /* buttons */
+
+  --todo-button-color: #4CAF50;
+  --in-progress-button-color: #FF9800;
+  --done-button-color: #007A95;
+
+  /* borderradious */
+  --border-radius: 0.5rem;
+  --border-radius-sm: 0.25rem;
+  --border-radius-md: 0.5rem;
+  --border-radius-lg: 0.75rem;
+  --border-radius-xl: 1rem;
 }
 
 body {
   background-color: var(--bg-color);
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6, p {
   font-family: 'Tilt-Warp';
   color: var(--text-color);
 }
