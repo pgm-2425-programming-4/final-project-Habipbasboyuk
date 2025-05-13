@@ -34,6 +34,12 @@
       ],
       "default": "To do",
       "required": true
+    },
+    "project": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::project.project",
+      "inversedBy": "todos"
     }
   }
 }

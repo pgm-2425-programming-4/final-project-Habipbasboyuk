@@ -26,3 +26,8 @@
     display: flex;
     justify-self: center;
 }
+
+.active {
+    background-color: antiquewhite;
+    box-shadow: inset;
+}
