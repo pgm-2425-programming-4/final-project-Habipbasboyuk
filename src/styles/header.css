@@ -22,7 +22,8 @@
 
 
 .project-container {
-    
+    display: flex;
+    align-items: center;
     .project-container__button {
         margin: 1rem;
         color: var(--light-text-color);

@@ -2,6 +2,7 @@
   border-radius: 1.5625rem;
   padding: var(--sm-padding) var(--l-padding);
   border: none;
+  cursor: pointer;
 }
 
 .btn-grey {
@@ -27,7 +28,22 @@
     justify-self: center;
 }
 
+.btn-backlog {
+    background-color: var(--backlog-button-color);
+    color: white !important;
+    border-radius: var(--border-radius);
+    padding: var(--m-padding) var(--l-padding);
+}
+
 .active {
     background-color: antiquewhite;
     box-shadow: inset;
+}
+
+.icon {
+    width: 3rem;
+    cursor: pointer;
+    align-items: center;
+    margin-top: auto;
+    padding: 0;
 }

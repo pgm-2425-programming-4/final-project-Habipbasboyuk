@@ -1,25 +1,23 @@
-import React from 'react';
-import { useState } from 'react';
-import { fetchTodos } from '../../queries/data';
-export default function Header({ onProjectSelect }) {
+import { useState } from "react";
+import { fetchTodos } from "../../queries/data";
 
 
+export default function Header({ onAddClick, onProjectSelect }) {
   const [todos, setTodos] = useState([]);
 
-fetchTodos().then(data => {
-             const todos = data.data;
-             setTodos(todos.length);
-            })
-
+  fetchTodos().then((data) => {
+    const todos = data.data;
+    setTodos(todos.length);
+  });
 
   const [activeButton, setActiveButton] = useState(null);
 
   const handleClick = (title) => {
-    setActiveButton(title); // Update de actieve knop
+    setActiveButton(title);
     if (title === "Toon alles") {
-      onProjectSelect(null); // toon alles
+      onProjectSelect(null);
     } else {
-      onProjectSelect(title); // toon specifieke project
+      onProjectSelect(title);
     }
   };
 
@@ -34,15 +32,26 @@ fetchTodos().then(data => {
         </div>
 
         <div className="project-container">
-            {["PGM-3", "PGM-4", "Toon alles"].map((title) => (
+          {["PGM-3", "PGM-4", "Toon alles"].map((title) => (
             <button
               key={title}
-              className={`btn btn-grey project-container__button project-button ${activeButton === title ? 'active' : ''}`}
+              className={`btn btn-grey project-container__button project-button ${
+                activeButton === title ? "active" : ""
+              }`}
               onClick={() => handleClick(title)}
             >
               {title}
             </button>
           ))}
+          <button className="btn project-container__button btn-backlog">
+            Backlog
+          </button>
+          <img
+            className="icon project-container__button"
+            src="./src/assets/icons/add-1-svgrepo-com.svg"
+            alt="Add task"
+            onClick={onAddClick}
+          />
         </div>
       </nav>
     </header>

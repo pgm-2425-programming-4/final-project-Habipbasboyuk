@@ -1,76 +1,45 @@
 import { useState, useEffect } from "react";
 import { fetchTodos } from "./queries/data";
-import Header from "./components/header/header.jsx"; // Importeer je header component
+import Header from "./components/header/header.jsx";
+import TaskCondition from "./components/todos/task-categories.jsx";
+import TaskForm from "./components/form/task-form.jsx";
 
 function App() {
   const [todos, setTodos] = useState([]);
-  const [selectedProject, setSelectedProject] = useState(null); // Hier bewaar je het geselecteerde project
+  const [selectedProject, setSelectedProject] = useState(null); 
+  const [showForm, setShowForm] = useState(false);
 
   useEffect(() => {
     fetchTodos().then((data) => {
       setTodos(data.data);
     });
-  }, []);
+  }, [todos]);
+
+  const filteredTodos = (status) =>
+    todos
+      .filter((todo) => todo.Condition === status)
+      .filter(
+        (todo) =>
+          !selectedProject ||
+          (todo.project && todo.project.title === selectedProject)
+      );
 
   return (
     <>
-      <Header onProjectSelect={setSelectedProject} />
+      <Header onAddClick={() => setShowForm(true)} onProjectSelect={setSelectedProject} />
+      
+      <article className="task-container">
+        <TaskCondition title="To do" todos={filteredTodos("To do")} />
+        <TaskCondition title="In progress" todos={filteredTodos("In progress")} />
+        <TaskCondition title="Done" todos={filteredTodos("Done")} />
 
-      <section className="task-container">
-        {/* To do */}
-        <div className="task">
-          <p className="task__category btn btn-todo">To do</p>
-          {todos
-            .filter((todo) => todo.Condition === "To do")
-            .filter(
-              (todo) =>
-                !selectedProject || (todo.project && todo.project.title === selectedProject)
-            )
-            .map((todo) => (
-              <article className="task-card" key={todo.id}>
-                <button className="task-card__button btn">{todo.category}</button>
-                <p className="task-card__name">{todo.Task}</p>
-                <p className="task-card__date">{todo.Deadline}</p>
-              </article>
-            ))}
-        </div>
-
-        {/* In progress */}
-        <div className="task">
-          <p className="task__category btn btn-in-progress">In progress</p>
-          {todos
-            .filter((todo) => todo.Condition === "In progress")
-            .filter(
-              (todo) =>
-                !selectedProject || (todo.project && todo.project.title === selectedProject)
-            )
-            .map((todo) => (
-              <article className="task-card" key={todo.id}>
-                <button className="task-card__button btn">{todo.category}</button>
-                <p className="task-card__name">{todo.Task}</p>
-                <p className="task-card__date">{todo.Deadline}</p>
-              </article>
-            ))}
-        </div>
-
-        {/* Done */}
-        <div className="task">
-          <p className="task__category btn btn-done">Done</p>
-          {todos
-            .filter((todo) => todo.Condition === "Done")
-            .filter(
-              (todo) =>
-                !selectedProject || (todo.project && todo.project.title === selectedProject)
-            )
-            .map((todo) => (
-              <article className="task-card" key={todo.id}>
-                <button className="task-card__button btn">{todo.category}</button>
-                <p className="task-card__name">{todo.Task}</p>
-                <p className="task-card__date">{todo.Deadline}</p>
-              </article>
-            ))}
-        </div>
-      </section>
+        {/* ➕ Hier wordt het formulier getoond als showForm true is */}
+        {showForm && (
+          <TaskForm
+            onClose={() => setShowForm(false)}
+            onTaskAdded={(newTask) => setTodos([...todos, newTask.data])}
+          />)}
+          </article>
     </>
   );
 }
