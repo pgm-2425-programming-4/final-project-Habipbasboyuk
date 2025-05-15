@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { fetchTodos } from "../../queries/data";
+import fetchTodos from "../../queries/data";
 
 
-export default function Header({ onAddClick, onProjectSelect }) {
+export default function Header({ onAddClick, onProjectSelect, onToggleBacklog }) {
+  // const [todos, setTodos] = useState([]);
   const [todos, setTodos] = useState([]);
 
   fetchTodos().then((data) => {
@@ -43,7 +44,7 @@ export default function Header({ onAddClick, onProjectSelect }) {
               {title}
             </button>
           ))}
-          <button className="btn project-container__button btn-backlog">
+          <button onClick={onToggleBacklog} className="btn project-container__button btn-backlog">
             Backlog
           </button>
           <img

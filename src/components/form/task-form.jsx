@@ -3,7 +3,7 @@ import { postTodo } from "../../queries/data";
 
 function TaskForm({ onClose }) {
   const [category, setCategory] = useState("Development");
-  const [condition, setCondition] = useState("To do");
+  const [condition, setCondition] = useState("");
   const [project, setProject] = useState("");
   const [task, setTask] = useState("");
   const [deadline, setDeadline] = useState("");
@@ -13,11 +13,11 @@ function TaskForm({ onClose }) {
 
     const newTask = {
       data: {
+        category: category,
         Task: task,
         Deadline: deadline,
-        Condition: condition,
-        category: category,
-        project: { id: project }
+        project: { id: Number(project) },
+        condition: { id: Number(condition) }
       },
     };
 
@@ -79,9 +79,10 @@ function TaskForm({ onClose }) {
             onChange={(e) => setCondition(e.target.value)}
             required
           >
-            <option value="To do">To do</option>
-            <option value="In progress">In progress</option>
-            <option value="Done">Done</option>
+            <option value="0">status</option>
+            <option value="1">To do</option>
+            <option value="3">In progress</option>
+            <option value="5">Done</option>
           </select>
         </label>
 
@@ -92,6 +93,7 @@ function TaskForm({ onClose }) {
             onChange={(e) => setProject(e.target.value)}
             required
           >
+            <option value="0">project</option>
             <option value="2">PGM-3</option>
             <option value="4">PGM-4</option>
           </select>
