@@ -1,0 +1,26 @@
+.backlog {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    width: 30%;
+    height: 60%;
+    padding: var(--xl-padding);
+    border-radius: var(--border-radius);
+
+
+    .backlog__pagination {
+        position: absolute;
+        display: flex;
+        bottom: 1rem;
+        left: 50%;
+        align-items: center;
+        transform: translateX(-50%);
+
+        button {
+            margin: 0.5rem;
+        }
+    }
+}
+

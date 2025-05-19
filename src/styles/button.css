@@ -35,6 +35,11 @@
     padding: var(--m-padding) var(--l-padding);
 }
 
+
+.btn-add, .btn-discard {
+    color: white;
+}
+
 .active {
     background-color: antiquewhite;
     box-shadow: inset;

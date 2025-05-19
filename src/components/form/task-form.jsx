@@ -42,39 +42,43 @@ function TaskForm({ onClose }) {
       <form className="task-form" onSubmit={handleSubmit}>
         <h2>Nieuwe taak toevoegen</h2>
 
-        <label>
+        <label className="task-form__label">
           Taak
           <input
             type="text"
+            className="task-form__input"
             value={task}
             onChange={(e) => setTask(e.target.value)}
             required
           />
         </label>
 
-        <label>
+        <label className="task-form__label">
           Deadline
           <input
             type="date"
+            className="task-form__input"
             value={deadline}
             onChange={(e) => setDeadline(e.target.value)}
             required
           />
         </label>
 
-        <label>
+        <label className="task-form__label">
           Categorie
           <input
             type="text"
+            className="task-form__input"
             value={category}
             onChange={(e) => setCategory(e.target.value)}
             required
           />
         </label>
 
-        <label>
+        <label className="task-form__label">
           Status
           <select
+            className="task-form__input"
             value={condition}
             onChange={(e) => setCondition(e.target.value)}
             required
@@ -83,12 +87,14 @@ function TaskForm({ onClose }) {
             <option value="1">To do</option>
             <option value="3">In progress</option>
             <option value="5">Done</option>
+            <option value="8">Backlog</option>
           </select>
         </label>
 
-        <label>
+        <label className="task-form__label">
           Project
           <select
+            className="task-form__input"
             value={project}
             onChange={(e) => setProject(e.target.value)}
             required
@@ -100,8 +106,8 @@ function TaskForm({ onClose }) {
         </label>
 
         <div className="form-buttons">
-          <button type="submit">Toevoegen</button>
-          <button type="button" onClick={onClose}>
+          <button className=" btn btn-done btn-add" type="submit">Toevoegen</button>
+          <button className="btn btn-in-progress btn-discard" type="button" onClick={onClose}>
             Annuleren
           </button>
         </div>

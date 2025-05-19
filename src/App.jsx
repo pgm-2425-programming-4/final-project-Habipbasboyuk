@@ -4,6 +4,8 @@ import Header from "./components/header/header.jsx";
 import TaskCondition from "./components/todos/task-categories.jsx";
 import TaskForm from "./components/form/task-form.jsx";
 import PaginatedBacklog from "./components/Backlog/PaginatedBacklog.jsx";
+
+
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 const queryClient = new QueryClient();
 function App() {
@@ -47,7 +49,7 @@ function App() {
         <TaskCondition title="In progress" todos={filteredTodos("In progress")} />
         <TaskCondition title="Done" todos={filteredTodos("Done")} />
 
-        {/* ➕ Hier wordt het formulier getoond als showForm true is */}
+
         {showForm && (
           <TaskForm
             onClose={() => setShowForm(false)}

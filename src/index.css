@@ -1,6 +1,8 @@
 @import url('./styles/button.css');
 @import url('./styles/header.css');
 @import url('./styles/task.css');
+@import url('./styles/form.css');
+@import url('./styles/backlog.css');
 @font-face {
   font-family: 'Tilt-Warp';
   src: url('./fonts/tilt_warp/TiltWarp-Regular-VariableFont_XROT,YROT.ttf') format('truetype');
@@ -51,6 +53,7 @@
 
 body {
   background-color: var(--bg-color);
+  position: realtive;
 }
 
 h1, h2, h3, h4, h5, h6, p {
