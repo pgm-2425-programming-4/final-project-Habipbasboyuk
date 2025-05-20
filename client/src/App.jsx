@@ -21,7 +21,7 @@ function App() {
 
   const filteredTodos = (status) =>
     todos
-      .filter((todo) => todo.Condition === status)
+      .filter((todo) => todo.condition.title === status)
       .filter(
         (todo) =>
           !selectedProject ||

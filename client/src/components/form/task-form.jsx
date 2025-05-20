@@ -15,7 +15,7 @@ function TaskForm({ onClose }) {
       data: {
       Task: task,
       Deadline: deadline,
-      Condition: condition,
+      condition: condition,
       category: category,
       project: { id: Number(project) }
       },
@@ -83,9 +83,9 @@ function TaskForm({ onClose }) {
             onChange={(e) => setCondition(e.target.value)}
             required
           >
-            <option value="To do">To do</option>
-            <option value="In progress">In progress</option>
-            <option value="Done">Done</option>
+            <option value="11">To do</option>
+            <option value="13">In progress</option>
+            <option value="15">Done</option>
           </select>
         </label>
 
