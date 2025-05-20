@@ -1,0 +1,30 @@
+.task-form-container {
+  background-color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: var(--xl-padding);
+    border-radius: var(--border-radius);
+  .task-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sm-margin);
+  }
+
+  .task-form__label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .task-form__input {
+    width: 45%;
+    border: 1px solid var(--bg-color);
+  }
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: space-between;
+}

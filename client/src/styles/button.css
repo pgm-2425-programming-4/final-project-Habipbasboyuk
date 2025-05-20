@@ -28,6 +28,10 @@
     justify-self: center;
 }
 
+.btn-form {
+    color: white;
+}
+
 .btn-backlog {
     background-color: var(--backlog-button-color);
     color: white !important;

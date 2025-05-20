@@ -1,6 +1,7 @@
 @import url('./styles/button.css');
 @import url('./styles/header.css');
 @import url('./styles/task.css');
+@import url('./styles/form.css');
 @font-face {
   font-family: 'Tilt-Warp';
   src: url('./fonts/tilt_warp/TiltWarp-Regular-VariableFont_XROT,YROT.ttf') format('truetype');
@@ -28,6 +29,16 @@
   --l-padding: 1.5rem;
   --xl-padding: 2rem;
 
+
+  /* margin */
+  --xs-margin: 0.25rem;
+  --sm-margin: 0.5rem;
+  --m-margin: 1rem;
+  --l-margin: 1.5rem;
+  --xl-margin: 2rem;
+  --xxl-margin: 3rem;
+  --xxxl-margin: 4rem;
+
   /* font-weight */
   --font-weight-light: 300;
   --font-weight-regular: 400;
@@ -49,9 +60,16 @@
   --border-radius-xl: 1rem;
 }
 
+#root {
+  height: 100vh;
+}
+
 body {
   background-color: var(--bg-color);
+  position: relative;
 }
+
+
 
 h1, h2, h3, h4, h5, h6, p {
   font-family: 'Tilt-Warp';

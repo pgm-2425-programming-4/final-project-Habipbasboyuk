@@ -13,11 +13,11 @@ function TaskForm({ onClose }) {
 
     const newTask = {
       data: {
-        Task: task,
-        Deadline: deadline,
-        Condition: condition,
-        category: category,
-        project: { id: project }
+      Task: task,
+      Deadline: deadline,
+      Condition: condition,
+      category: category,
+      project: { id: Number(project) }
       },
     };
 
@@ -38,43 +38,47 @@ function TaskForm({ onClose }) {
   };
 
   return (
-    <div className="task-form-overlay">
+    <div className="task-form-container">
       <form className="task-form" onSubmit={handleSubmit}>
         <h2>Nieuwe taak toevoegen</h2>
 
-        <label>
+        <label className="task-form__label">
           Taak
           <input
             type="text"
+            className="task-form__input btn input-form"
             value={task}
             onChange={(e) => setTask(e.target.value)}
             required
           />
         </label>
 
-        <label>
+        <label className="task-form__label">
           Deadline
           <input
             type="date"
+            className="task-form__input btn input-form"
             value={deadline}
             onChange={(e) => setDeadline(e.target.value)}
             required
           />
         </label>
 
-        <label>
+        <label className="task-form__label">
           Categorie
           <input
             type="text"
+            className="task-form__input btn input-form"
             value={category}
             onChange={(e) => setCategory(e.target.value)}
             required
           />
         </label>
 
-        <label>
+        <label className="task-form__label">
           Status
           <select
+            className="task-form__input btn input-form"
             value={condition}
             onChange={(e) => setCondition(e.target.value)}
             required
@@ -85,21 +89,23 @@ function TaskForm({ onClose }) {
           </select>
         </label>
 
-        <label>
+        <label className="task-form__label">
           Project
           <select
+            className="task-form__input btn input-form"
             value={project}
             onChange={(e) => setProject(e.target.value)}
             required
           >
+            <option value="">Kies project</option>
             <option value="2">PGM-3</option>
             <option value="4">PGM-4</option>
           </select>
         </label>
 
         <div className="form-buttons">
-          <button type="submit">Toevoegen</button>
-          <button type="button" onClick={onClose}>
+          <button className="task-form__btn btn btn-form btn-done" type="submit">Toevoegen</button>
+          <button className="task-form__btn btn" type="button" onClick={onClose}>
             Annuleren
           </button>
         </div>

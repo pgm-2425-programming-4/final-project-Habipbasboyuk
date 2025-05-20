@@ -6,6 +6,14 @@
     gap: 4rem;
 }
 
+.task {
+        overflow-y: scroll;
+    max-height: 30rem;
+
+    scrollbar-width: thin;
+    scrollbar-color: var(--fg-color) var(--bg-color);
+}
+
 .task__category {
     text-align: center;
 }
@@ -13,6 +21,10 @@
 
 .task-card {
 
+    
+
+
+    cursor: pointer;
     width: 15rem;
     border: 2px solid var(--fg-color);
     border-radius: var(--border-radius-xl);
