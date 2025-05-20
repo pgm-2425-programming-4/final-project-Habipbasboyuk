@@ -1,7 +1,7 @@
 export default function TaskCondition({ title, todos }) {
   return (
     <div className="task">
-      <p className={`task__category btn-todo btn btn-${title.replace(" ", "-").toLowerCase()}`}>
+      <p className={`task__category btn-todo btn`}>
         {title}
       </p>
       {todos.map((todo) => (
