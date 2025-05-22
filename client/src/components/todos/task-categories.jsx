@@ -36,7 +36,7 @@ export default function TaskCondition({ title, todos }) {
             <div className="task-card__actions">
               <button onClick={() => {
 
-                handleDelete(todo.id);
+                handleDelete(todo.documentId);
               }}>
                 Verwijderen
               </button>

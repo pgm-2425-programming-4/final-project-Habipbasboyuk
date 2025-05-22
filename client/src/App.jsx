@@ -15,7 +15,7 @@ function App() {
     fetchTodos().then((data) => {
       setTodos(data.data);
     });
-  }, []);
+  }, [todos]);
 
   const filteredTodos = (status) =>
     todos

@@ -1,5 +1,7 @@
+import { API_URL } from "../constants/constants";
+
 export async function fetchTodos() {
-  return fetch("http://localhost:1337/api/todos?populate=*")
+  return fetch(`${API_URL}?populate=*`)
     .then(res => res.json())
     .catch(err => console.error("Fout bij ophalen:", err));
 }
@@ -17,7 +19,7 @@ if (condition) {
 
   const query = new URLSearchParams(params);
 
-  const url = `http://localhost:1337/api/todos?${query}`;
+  const url = `${API_URL}?${query}`;
 
   try {
     const res = await fetch(url);
@@ -31,7 +33,7 @@ if (condition) {
 
 export async function postTodo(data) {
   try {
-    const response = await fetch("http://localhost:1337/api/todos?populate=*", {
+    const response = await fetch(`${API_URL}?populate=*`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
