@@ -5,7 +5,7 @@ export default function TaskCondition({ title, todos }) {
 
   const handleDelete = async (id) => {
     try {
-      await fetch(`${API_URL}/${id}`, {
+      await fetch(`${API_URL}/todos/${id}`, {
         method: 'DELETE',
       });
       console.log("Taak verwijderd:", id);

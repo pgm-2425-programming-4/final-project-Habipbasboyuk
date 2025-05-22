@@ -1,7 +1,7 @@
 import { API_URL } from "../constants/constants";
 
 export async function fetchTodos() {
-  return fetch(`${API_URL}?populate=*`)
+  return fetch(`${API_URL}/todos?populate=*`)
     .then(res => res.json())
     .catch(err => console.error("Fout bij ophalen:", err));
 }
@@ -19,7 +19,7 @@ if (condition) {
 
   const query = new URLSearchParams(params);
 
-  const url = `${API_URL}?${query}`;
+  const url = `${API_URL}/todos?${query}`;
 
   try {
     const res = await fetch(url);
@@ -33,7 +33,7 @@ if (condition) {
 
 export async function postTodo(data) {
   try {
-    const response = await fetch(`${API_URL}?populate=*`, {
+    const response = await fetch(`${API_URL}/todos?populate=*`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

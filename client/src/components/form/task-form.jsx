@@ -1,23 +1,38 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { postTodo } from "../../queries/data";
+
+import { API_URL } from "../../constants/constants";
 
 function TaskForm({ onClose }) {
   const [category, setCategory] = useState("Development");
-  const [condition, setCondition] = useState("To do");
+  const [condition, setCondition] = useState("");
   const [project, setProject] = useState("");
   const [task, setTask] = useState("");
   const [deadline, setDeadline] = useState("");
+  const [conditions, setConditions] = useState([]);
+  const [projects, setProjects] = useState([]);
+
+  useEffect(() => {
+    // Fetch conditions (statuses)
+    fetch(`${API_URL}/conditions`)
+      .then(res => res.json())
+      .then(data => setConditions(data.data || []));
+    // Fetch projects
+    fetch(`${API_URL}/projects`)
+      .then(res => res.json())
+      .then(data => setProjects(data.data || []));
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const newTask = {
       data: {
-      Task: task,
-      Deadline: deadline,
-      condition: condition,
-      category: category,
-      project: { id: Number(project) }
+        Task: task,
+        Deadline: deadline,
+        condition: condition ? { id: Number(condition) } : undefined,
+        category: category,
+        project: project ? { id: Number(project) } : undefined,
       },
     };
 
@@ -84,10 +99,11 @@ function TaskForm({ onClose }) {
             required
           >
             <option value="">status</option>
-            <option value="11">To do</option>
-            <option value="13">In progress</option>
-            <option value="15">Done</option>
-            <option value="17">Backlog</option>
+            {conditions.map(cond => (
+              <option key={cond.id} value={cond.id}>
+                {cond.attributes.title}
+              </option>
+            ))}
           </select>
         </label>
 
@@ -100,8 +116,11 @@ function TaskForm({ onClose }) {
             required
           >
             <option value="">Kies project</option>
-            <option value="2">PGM-3</option>
-            <option value="4">PGM-4</option>
+            {projects.map(proj => (
+              <option key={proj.id} value={proj.id}>
+                {proj.attributes.title}
+              </option>
+            ))}
           </select>
         </label>
 
