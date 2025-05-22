@@ -1,11 +1,11 @@
 import { useState } from 'react';
-
+import { API_URL } from '../../constants/constants';
 export default function TaskCondition({ title, todos }) {
   const [selectedId, setSelectedId] = useState(null);
 
   const handleDelete = async (id) => {
     try {
-      await fetch(`http://localhost:1337/api/todos/${id}`, {
+      await fetch(`${API_URL}/${id}`, {
         method: 'DELETE',
       });
       console.log("Taak verwijderd:", id);
