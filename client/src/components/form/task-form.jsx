@@ -13,11 +13,11 @@ function TaskForm({ onClose }) {
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
-    // Fetch conditions (statuses)
+
     fetch(`${API_URL}/conditions`)
       .then(res => res.json())
       .then(data => setConditions(data.data || []));
-    // Fetch projects
+
     fetch(`${API_URL}/projects`)
       .then(res => res.json())
       .then(data => setProjects(data.data || []));
@@ -99,9 +99,9 @@ function TaskForm({ onClose }) {
             required
           >
             <option value="">status</option>
-            {conditions.map(cond => (
-              <option key={cond.id} value={cond.id}>
-                {cond.attributes.title}
+            {conditions.map(condition => (
+              <option key={condition.id} value={condition.id}>
+                {condition.title}
               </option>
             ))}
           </select>
@@ -118,7 +118,7 @@ function TaskForm({ onClose }) {
             <option value="">Kies project</option>
             {projects.map(proj => (
               <option key={proj.id} value={proj.id}>
-                {proj.attributes.title}
+                {proj.title}
               </option>
             ))}
           </select>
