@@ -25,21 +25,17 @@
       "type": "date",
       "required": true
     },
-    "Condition": {
-      "type": "enumeration",
-      "enum": [
-        "To do",
-        "In progress",
-        "Done"
-      ],
-      "default": "To do",
-      "required": true
-    },
     "project": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::project.project",
       "inversedBy": "todos"
+    },
+    "condition": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::condition.condition",
+      "inversedBy": "conditions"
     }
   }
 }

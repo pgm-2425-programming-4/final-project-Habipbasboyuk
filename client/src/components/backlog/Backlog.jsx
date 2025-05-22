@@ -1,9 +1,9 @@
-
+import PaginatedBacklog from "./paginatedBacklog";
 
 function Backlog() {
   return (
-    <div>Backlog</div>
-  )
+    <PaginatedBacklog />
+  );
 }
 
-export default Backlog
+export default Backlog;

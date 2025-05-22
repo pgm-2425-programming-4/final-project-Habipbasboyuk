@@ -373,6 +373,38 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiConditionCondition extends Struct.CollectionTypeSchema {
+  collectionName: 'conditions';
+  info: {
+    description: '';
+    displayName: 'Condition';
+    pluralName: 'conditions';
+    singularName: 'condition';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    conditions: Schema.Attribute.Relation<'oneToMany', 'api::todo.todo'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::condition.condition'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiProjectProject extends Struct.CollectionTypeSchema {
   collectionName: 'projects';
   info: {
@@ -421,9 +453,10 @@ export interface ApiTodoTodo extends Struct.CollectionTypeSchema {
     category: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'Development'>;
-    Condition: Schema.Attribute.Enumeration<['To do', 'In progress', 'Done']> &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<'To do'>;
+    condition: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::condition.condition'
+    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -951,6 +984,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::condition.condition': ApiConditionCondition;
       'api::project.project': ApiProjectProject;
       'api::todo.todo': ApiTodoTodo;
       'plugin::content-releases.release': PluginContentReleasesRelease;

@@ -83,9 +83,11 @@ function TaskForm({ onClose }) {
             onChange={(e) => setCondition(e.target.value)}
             required
           >
+            <option value="">status</option>
             <option value="11">To do</option>
             <option value="13">In progress</option>
             <option value="15">Done</option>
+            <option value="17">Backlog</option>
           </select>
         </label>
 
