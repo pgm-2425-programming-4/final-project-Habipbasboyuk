@@ -1,31 +1,3 @@
-<<<<<<< HEAD:src/styles/form.css
-.task-form-overlay {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    padding: var(--xl-padding);
-    width: 30%;
-    height: 60%;
-
-
-
-}
-
-.task-form__label {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: var(--sm-padding);
-
-
-    .task-form__input {
-        padding: var(--sm-padding);
-        border: 1px solid var(--light-text-color);
-        border-radius: var(--border-radius);
-    }
-=======
 .task-form-container {
   background-color: white;
   position: absolute;
@@ -33,34 +5,34 @@
   left: 50%;
   transform: translate(-50%, -50%);
   padding: var(--xl-padding);
-    border-radius: var(--border-radius);
-  .task-form {
-    display: flex;
-    flex-direction: column;
-    gap: var(--sm-margin);
-  }
+  border-radius: var(--border-radius);
+  width: 30%;
+  height: 60%;
+}
 
-  .task-form__label {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
+.task-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sm-margin);
+}
 
-  .task-form__input {
-    width: 45%;
-    border: 1px solid var(--bg-color);
-  }
->>>>>>> 2b5fa8fc4775483e8d7229c767bd7496dc9da25b:client/src/styles/form.css
+.task-form__label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--sm-padding);
+}
+
+.task-form__input {
+  padding: var(--sm-padding);
+  border: 1px solid var(--light-text-color);
+  border-radius: var(--border-radius);
+  width: 45%;
 }
 
 .form-buttons {
-    display: flex;
-<<<<<<< HEAD:src/styles/form.css
-    gap: 1rem;
-    justify-content: center;
-    margin-top: var(--m-padding);
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: var(--m-padding);
 }
-=======
-    justify-content: space-between;
-}
->>>>>>> 2b5fa8fc4775483e8d7229c767bd7496dc9da25b:client/src/styles/form.css

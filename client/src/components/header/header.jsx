@@ -1,19 +1,16 @@
 import { useState } from "react";
 import fetchTodos from "../../queries/data";
 
-
-<<<<<<< HEAD:src/components/header/header.jsx
-export default function Header({ onAddClick, onProjectSelect, onToggleBacklog }) {
-  // const [todos, setTodos] = useState([]);
-=======
 export default function Header({ onAddClick, onProjectSelect, onBacklogClick }) {
->>>>>>> 2b5fa8fc4775483e8d7229c767bd7496dc9da25b:client/src/components/header/header.jsx
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(0);
 
-  fetchTodos().then((data) => {
-    const todos = data.data;
-    setTodos(todos.length);
-  });
+  // Fetch todos only once on mount
+  useState(() => {
+    fetchTodos().then((data) => {
+      const todos = data.data;
+      setTodos(todos.length);
+    });
+  }, []);
 
   const [activeButton, setActiveButton] = useState(null);
 
@@ -48,11 +45,7 @@ export default function Header({ onAddClick, onProjectSelect, onBacklogClick }) 
               {title}
             </button>
           ))}
-<<<<<<< HEAD:src/components/header/header.jsx
-          <button onClick={onToggleBacklog} className="btn project-container__button btn-backlog">
-=======
           <button onClick={onBacklogClick} className="btn project-container__button btn-backlog">
->>>>>>> 2b5fa8fc4775483e8d7229c767bd7496dc9da25b:client/src/components/header/header.jsx
             Backlog
           </button>
           <img
