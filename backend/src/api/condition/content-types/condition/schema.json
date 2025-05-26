@@ -4,18 +4,31 @@
   "info": {
     "singularName": "condition",
     "pluralName": "conditions",
+<<<<<<< HEAD
     "displayName": "Condition"
+=======
+    "displayName": "Condition",
+    "description": ""
+>>>>>>> 2b5fa8fc4775483e8d7229c767bd7496dc9da25b
   },
   "options": {
     "draftAndPublish": true
   },
   "attributes": {
+<<<<<<< HEAD
     "Title": {
+=======
+    "title": {
+>>>>>>> 2b5fa8fc4775483e8d7229c767bd7496dc9da25b
       "type": "string",
       "required": true,
       "unique": true
     },
+<<<<<<< HEAD
     "todos": {
+=======
+    "conditions": {
+>>>>>>> 2b5fa8fc4775483e8d7229c767bd7496dc9da25b
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::todo.todo",

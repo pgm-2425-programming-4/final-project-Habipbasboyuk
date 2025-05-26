@@ -376,6 +376,10 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
 export interface ApiConditionCondition extends Struct.CollectionTypeSchema {
   collectionName: 'conditions';
   info: {
+<<<<<<< HEAD
+=======
+    description: '';
+>>>>>>> 2b5fa8fc4775483e8d7229c767bd7496dc9da25b
     displayName: 'Condition';
     pluralName: 'conditions';
     singularName: 'condition';
@@ -384,6 +388,10 @@ export interface ApiConditionCondition extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+<<<<<<< HEAD
+=======
+    conditions: Schema.Attribute.Relation<'oneToMany', 'api::todo.todo'>;
+>>>>>>> 2b5fa8fc4775483e8d7229c767bd7496dc9da25b
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -394,10 +402,16 @@ export interface ApiConditionCondition extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
+<<<<<<< HEAD
     Title: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
     todos: Schema.Attribute.Relation<'oneToMany', 'api::todo.todo'>;
+=======
+    title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+>>>>>>> 2b5fa8fc4775483e8d7229c767bd7496dc9da25b
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -407,6 +421,7 @@ export interface ApiConditionCondition extends Struct.CollectionTypeSchema {
 export interface ApiProjectProject extends Struct.CollectionTypeSchema {
   collectionName: 'projects';
   info: {
+    description: '';
     displayName: 'Project';
     pluralName: 'projects';
     singularName: 'project';
@@ -427,7 +442,8 @@ export interface ApiProjectProject extends Struct.CollectionTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     title: Schema.Attribute.String &
       Schema.Attribute.Required &
-      Schema.Attribute.Unique;
+      Schema.Attribute.Unique &
+      Schema.Attribute.DefaultTo<'Kies project'>;
     todos: Schema.Attribute.Relation<'oneToMany', 'api::todo.todo'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &

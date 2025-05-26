@@ -2,7 +2,10 @@
 @import url('./styles/header.css');
 @import url('./styles/task.css');
 @import url('./styles/form.css');
+<<<<<<< HEAD:src/index.css
 @import url('./styles/backlog.css');
+=======
+>>>>>>> 2b5fa8fc4775483e8d7229c767bd7496dc9da25b:client/src/index.css
 @font-face {
   font-family: 'Tilt-Warp';
   src: url('./fonts/tilt_warp/TiltWarp-Regular-VariableFont_XROT,YROT.ttf') format('truetype');
@@ -30,6 +33,16 @@
   --l-padding: 1.5rem;
   --xl-padding: 2rem;
 
+
+  /* margin */
+  --xs-margin: 0.25rem;
+  --sm-margin: 0.5rem;
+  --m-margin: 1rem;
+  --l-margin: 1.5rem;
+  --xl-margin: 2rem;
+  --xxl-margin: 3rem;
+  --xxxl-margin: 4rem;
+
   /* font-weight */
   --font-weight-light: 300;
   --font-weight-regular: 400;
@@ -51,10 +64,20 @@
   --border-radius-xl: 1rem;
 }
 
+#root {
+  height: 100vh;
+}
+
 body {
   background-color: var(--bg-color);
+<<<<<<< HEAD:src/index.css
   position: realtive;
+=======
+  position: relative;
+>>>>>>> 2b5fa8fc4775483e8d7229c767bd7496dc9da25b:client/src/index.css
 }
+
+
 
 h1, h2, h3, h4, h5, h6, p {
   font-family: 'Tilt-Warp';
