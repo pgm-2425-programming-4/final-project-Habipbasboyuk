@@ -35,11 +35,8 @@
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::condition.condition",
-<<<<<<< HEAD
+
       "inversedBy": "todos"
-=======
-      "inversedBy": "conditions"
->>>>>>> 2b5fa8fc4775483e8d7229c767bd7496dc9da25b
     }
   }
 }
