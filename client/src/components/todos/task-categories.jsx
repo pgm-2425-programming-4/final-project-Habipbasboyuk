@@ -1,12 +1,31 @@
 import { useState } from 'react';
 import { API_URL } from '../../constants/constants';
-export default function TaskCondition({ title, todos }) {
+
+
+export default function TaskCondition({ title, todos, onEditClick }) {
   const [selectedId, setSelectedId] = useState(null);
 
   const handleDelete = async (id) => {
     try {
       await fetch(`${API_URL}/todos/${id}`, {
         method: 'DELETE',
+      });
+      console.log("Taak verwijderd:", id);
+      setSelectedId(null);
+    } catch (err) {
+      console.error("Fout bij verwijderen:", err);
+    }
+  };
+
+  const handleChange = async(id) => {
+    try {
+      await fetch(`${API_URL}/todos/${id}`, {
+        method: 'PUT',
+        body: JSON.stringify({
+          condition: {
+            title: "In progress"
+          }
+        }),
       });
       console.log("Taak verwijderd:", id);
       setSelectedId(null);
@@ -39,6 +58,14 @@ export default function TaskCondition({ title, todos }) {
                 handleDelete(todo.documentId);
               }}>
                 Verwijderen
+              </button>
+              <button
+              onClick = {() => {
+                
+                handleChange(todo.documentId);
+                onEditClick(todo);
+              }}>
+                Wijzig
               </button>
               <button onClick={(e) => {
                 e.stopPropagation();

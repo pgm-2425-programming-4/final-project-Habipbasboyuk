@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { fetchTodos } from "../../queries/data";
+import { Link } from "@tanstack/react-router"; // Add this import
 
-
-export default function Header({ onAddClick, onProjectSelect, onBacklogClick }) {
+export default function Header({ onAddClick, onProjectSelect }) {
   const [todos, setTodos] = useState([]);
 
   fetchTodos().then((data) => {
@@ -33,19 +33,25 @@ export default function Header({ onAddClick, onProjectSelect, onBacklogClick }) 
 
         <div className="project-container">
           {["PGM-3", "PGM-4", "Toon alles"].map((title) => (
-            <button
+            <Link
+              to={`/${title === "Toon alles" ? "" : title.toLowerCase()}`}
               key={title}
-              className={`btn btn-grey project-container__button project-button ${
-                activeButton === title ? "active" : ""
-              }`}
-              onClick={() => handleClick(title)}
             >
-              {title}
-            </button>
+              <button
+                className={`btn btn-grey project-container__button project-button ${
+                  activeButton === title ? "active" : ""
+                }`}
+                onClick={() => handleClick(title)}
+                type="button"
+              >
+                {title}
+              </button>
+            </Link>
+
           ))}
-          <button onClick={onBacklogClick} className="btn project-container__button btn-backlog">
+          <Link to="/backlog" className="btn project-container__button btn-backlog">
             Backlog
-          </button>
+          </Link>
           <img
             className="icon project-container__button"
             src="./src/assets/icons/add-1-svgrepo-com.svg"

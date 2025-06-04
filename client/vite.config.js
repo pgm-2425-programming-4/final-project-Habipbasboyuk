@@ -1,11 +1,15 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import { TanStackRouterVite } from '@tanstack/router-plugin/vite'
 
-// https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    TanStackRouterVite({ target: 'react', autoCodeSplitting: true }),
+    react(),
+  ],
   server: {
-    allowedHosts: ['devserver-main--steady-chaja-e7478c.netlify.app'],
+    host: true, // Allows access from network (LAN)
+    port: 5173, // You can change this if needed
+    open: true, // Opens browser on dev start
   },
-
 })
