@@ -3,7 +3,7 @@ import { postTodo } from "../../queries/data";
 
 import { API_URL } from "../../constants/constants";
 
-function TaskForm({ onClose }) {
+function TaskForm({ onClose, onTaskAdded }) {
   const [category, setCategory] = useState("Development");
   const [condition, setCondition] = useState("");
   const [project, setProject] = useState("");
@@ -13,36 +13,34 @@ function TaskForm({ onClose }) {
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
-
     fetch(`${API_URL}/conditions`)
-      .then(res => res.json())
-      .then(data => setConditions(data.data || []));
+      .then((res) => res.json())
+      .then((data) => setConditions(data.data || []));
 
     fetch(`${API_URL}/projects`)
-      .then(res => res.json())
-      .then(data => setProjects(data.data || []));
+      .then((res) => res.json())
+      .then((data) => setProjects(data.data || []));
   }, []);
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    const newTask = {
-      data: {
-        Task: task,
-        Deadline: deadline,
-        condition: condition ? { id: Number(condition) } : undefined,
-        category: category,
-        project: project ? { id: Number(project) } : undefined,
-      },
-    };
+  const newTask = {
+    data: {
+      Task: task,
+      Deadline: deadline,
+      condition: condition ? { id: Number(condition) } : undefined,
+      category: category,
+      project: project ? { id: Number(project) } : undefined,
+    },
+  };
 
-    console.log("Nieuwe taak:", newTask);
-
-    try {
-      const response = await postTodo(newTask);
-      console.log("✅ Taak succesvol toegevoegd:", response);
-      onClose();
-    } catch (error) {
+  try {
+ await postTodo(newTask);
+ console.log('watisdit')
+  onClose();
+  if (onTaskAdded) await onTaskAdded();
+  } catch (error) {
       console.error("❌ Fout bij het toevoegen van de taak:", error);
 
       if (error.response) {
@@ -99,7 +97,7 @@ function TaskForm({ onClose }) {
             required
           >
             <option value="">status</option>
-            {conditions.map(condition => (
+            {conditions.map((condition) => (
               <option key={condition.id} value={condition.id}>
                 {condition.title}
               </option>
@@ -116,7 +114,7 @@ function TaskForm({ onClose }) {
             required
           >
             <option value="">Kies project</option>
-            {projects.map(proj => (
+            {projects.map((proj) => (
               <option key={proj.id} value={proj.id}>
                 {proj.title}
               </option>
@@ -125,8 +123,17 @@ function TaskForm({ onClose }) {
         </label>
 
         <div className="form-buttons">
-          <button className="task-form__btn btn btn-form btn-done" type="submit">Toevoegen</button>
-          <button className="task-form__btn btn" type="button" onClick={onClose}>
+          <button
+            className="task-form__btn btn btn-form btn-done"
+            type="submit"
+          >
+            Toevoegen
+          </button>
+          <button
+            className="task-form__btn btn"
+            type="button"
+            onClick={onClose}
+          >
             Annuleren
           </button>
         </div>

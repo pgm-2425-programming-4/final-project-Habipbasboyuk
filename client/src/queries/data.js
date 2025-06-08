@@ -6,6 +6,14 @@ export async function fetchTodos() {
     .catch(err => console.error("Fout bij ophalen:", err));
 }
 
+export async function fetchProjects() {
+  return fetch(`${API_URL}/projects?populate=*`)
+    .then(res => res.json())
+    .catch(err => console.error("Fout bij ophalen:", err));
+}
+
+
+
 export async function fetchBacklog({ page = 1, pageSize = 5, condition = "Backlog" } = {}) {
   const params = {
     'pagination[page]': page,

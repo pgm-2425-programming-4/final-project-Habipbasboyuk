@@ -1,14 +1,22 @@
-import { useState } from "react";
-import { fetchTodos } from "../../queries/data";
-import { Link } from "@tanstack/react-router"; // Add this import
+import { useState, useEffect } from "react";
+import { Link } from "@tanstack/react-router";
+import { fetchProjects, fetchTodos } from "../../queries/data.js";
 
 export default function Header({ onAddClick, onProjectSelect }) {
   const [todos, setTodos] = useState([]);
+  const [projects, setProjects] = useState([]);
 
-  fetchTodos().then((data) => {
-    const todos = data.data;
-    setTodos(todos.length);
-  });
+  useEffect(() => {
+    fetchTodos().then((data) => {
+      setTodos(data.data || []);
+    });
+  }, []);
+
+  useEffect(() => {
+    fetchProjects().then((data) => {
+      setProjects(data.data || []);
+    });
+  }, []);
 
   const [activeButton, setActiveButton] = useState(null);
 
@@ -27,29 +35,32 @@ export default function Header({ onAddClick, onProjectSelect }) {
         <div className="heading">
           <h1 className="heading__title">Dashboard</h1>
           <h2 className="heading__status">
-            You have <span className="highlight"> {todos} Tasks!</span>
+            You have <span className="highlight"> {todos.length} Tasks!</span>
           </h2>
         </div>
 
         <div className="project-container">
-          {["PGM-3", "PGM-4", "Toon alles"].map((title) => (
+          {projects.map((project) => (
             <Link
-              to={`/${title === "Toon alles" ? "" : title.toLowerCase()}`}
-              key={title}
+              to="/projects/$projectId"
+              params={{ projectId: project.id }}
+              key={project.id}
             >
               <button
                 className={`btn btn-grey project-container__button project-button ${
-                  activeButton === title ? "active" : ""
+                  activeButton === project.title ? "active" : ""
                 }`}
-                onClick={() => handleClick(title)}
+                onClick={() => handleClick(project.title)}
                 type="button"
               >
-                {title}
+                {project.title}
               </button>
             </Link>
-
           ))}
-          <Link to="/backlog" className="btn project-container__button btn-backlog">
+          <Link
+            to="/backlog"
+            className="btn project-container__button btn-backlog"
+          >
             Backlog
           </Link>
           <img
