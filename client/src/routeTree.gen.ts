@@ -11,26 +11,12 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as Pgm4Import } from './routes/pgm-4'
-import { Route as Pgm3Import } from './routes/pgm-3'
 import { Route as BacklogImport } from './routes/backlog'
 import { Route as AboutImport } from './routes/about'
 import { Route as IndexImport } from './routes/index'
 import { Route as ProjectsProjectIdImport } from './routes/projects/$projectId'
 
 // Create/Update Routes
-
-const Pgm4Route = Pgm4Import.update({
-  id: '/pgm-4',
-  path: '/pgm-4',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const Pgm3Route = Pgm3Import.update({
-  id: '/pgm-3',
-  path: '/pgm-3',
-  getParentRoute: () => rootRoute,
-} as any)
 
 const BacklogRoute = BacklogImport.update({
   id: '/backlog',
@@ -81,20 +67,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BacklogImport
       parentRoute: typeof rootRoute
     }
-    '/pgm-3': {
-      id: '/pgm-3'
-      path: '/pgm-3'
-      fullPath: '/pgm-3'
-      preLoaderRoute: typeof Pgm3Import
-      parentRoute: typeof rootRoute
-    }
-    '/pgm-4': {
-      id: '/pgm-4'
-      path: '/pgm-4'
-      fullPath: '/pgm-4'
-      preLoaderRoute: typeof Pgm4Import
-      parentRoute: typeof rootRoute
-    }
     '/projects/$projectId': {
       id: '/projects/$projectId'
       path: '/projects/$projectId'
@@ -111,8 +83,6 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/backlog': typeof BacklogRoute
-  '/pgm-3': typeof Pgm3Route
-  '/pgm-4': typeof Pgm4Route
   '/projects/$projectId': typeof ProjectsProjectIdRoute
 }
 
@@ -120,8 +90,6 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/backlog': typeof BacklogRoute
-  '/pgm-3': typeof Pgm3Route
-  '/pgm-4': typeof Pgm4Route
   '/projects/$projectId': typeof ProjectsProjectIdRoute
 }
 
@@ -130,30 +98,15 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/backlog': typeof BacklogRoute
-  '/pgm-3': typeof Pgm3Route
-  '/pgm-4': typeof Pgm4Route
   '/projects/$projectId': typeof ProjectsProjectIdRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/'
-    | '/about'
-    | '/backlog'
-    | '/pgm-3'
-    | '/pgm-4'
-    | '/projects/$projectId'
+  fullPaths: '/' | '/about' | '/backlog' | '/projects/$projectId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/backlog' | '/pgm-3' | '/pgm-4' | '/projects/$projectId'
-  id:
-    | '__root__'
-    | '/'
-    | '/about'
-    | '/backlog'
-    | '/pgm-3'
-    | '/pgm-4'
-    | '/projects/$projectId'
+  to: '/' | '/about' | '/backlog' | '/projects/$projectId'
+  id: '__root__' | '/' | '/about' | '/backlog' | '/projects/$projectId'
   fileRoutesById: FileRoutesById
 }
 
@@ -161,8 +114,6 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   BacklogRoute: typeof BacklogRoute
-  Pgm3Route: typeof Pgm3Route
-  Pgm4Route: typeof Pgm4Route
   ProjectsProjectIdRoute: typeof ProjectsProjectIdRoute
 }
 
@@ -170,8 +121,6 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   BacklogRoute: BacklogRoute,
-  Pgm3Route: Pgm3Route,
-  Pgm4Route: Pgm4Route,
   ProjectsProjectIdRoute: ProjectsProjectIdRoute,
 }
 
@@ -188,8 +137,6 @@ export const routeTree = rootRoute
         "/",
         "/about",
         "/backlog",
-        "/pgm-3",
-        "/pgm-4",
         "/projects/$projectId"
       ]
     },
@@ -201,12 +148,6 @@ export const routeTree = rootRoute
     },
     "/backlog": {
       "filePath": "backlog.jsx"
-    },
-    "/pgm-3": {
-      "filePath": "pgm-3.jsx"
-    },
-    "/pgm-4": {
-      "filePath": "pgm-4.jsx"
     },
     "/projects/$projectId": {
       "filePath": "projects/$projectId.jsx"

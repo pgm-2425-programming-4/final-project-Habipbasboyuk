@@ -1,30 +1,30 @@
-import { useState } from 'react';
-import { API_URL } from '../../constants/constants';
+import { useState } from "react";
+import { API_URL } from "../../constants/constants";
 
-
-export default function TaskCondition({ title, todos, onEditClick }) {
+export default function TaskCondition({ title, todos, onEditClick, onDelete }) {
   const [selectedId, setSelectedId] = useState(null);
 
   const handleDelete = async (id) => {
     try {
       await fetch(`${API_URL}/todos/${id}`, {
-        method: 'DELETE',
+        method: "DELETE",
       });
       console.log("Taak verwijderd:", id);
       setSelectedId(null);
+      if (onDelete) onDelete(id);
     } catch (err) {
       console.error("Fout bij verwijderen:", err);
     }
   };
 
-  const handleChange = async(id) => {
+  const handleChange = async (id) => {
     try {
       await fetch(`${API_URL}/todos/${id}`, {
-        method: 'PUT',
+        method: "PUT",
         body: JSON.stringify({
           condition: {
-            title: "In progress"
-          }
+            title: "In progress",
+          },
         }),
       });
       console.log("Taak verwijderd:", id);
@@ -36,7 +36,9 @@ export default function TaskCondition({ title, todos, onEditClick }) {
 
   return (
     <div className="task">
-      <p className={`task__category btn-todo btn btn-${title.replace(" ", "-").toLowerCase()}`}>
+      <p
+        className={`task__category btn-todo btn btn-${title.replace(" ", "-").toLowerCase()}`}
+      >
         {title}
       </p>
 
@@ -45,7 +47,7 @@ export default function TaskCondition({ title, todos, onEditClick }) {
           className="task-card"
           key={todo.id}
           onClick={() => setSelectedId(todo.id)}
-          style={{ position: 'relative' }}
+          style={{ position: "relative" }}
         >
           <button className="task-card__button btn">{todo.category}</button>
           <p className="task-card__name">{todo.Task}</p>
@@ -53,24 +55,21 @@ export default function TaskCondition({ title, todos, onEditClick }) {
 
           {selectedId === todo.id && (
             <div className="task-card__actions">
-              <button onClick={() => {
-
-                handleDelete(todo.documentId);
-              }}>
-                Verwijderen
-              </button>
-              <button
-              onClick = {() => {
-                
-                handleChange(todo.documentId);
-                onEditClick(todo);
-              }}>
+              <button class="btn btn-red" onClick={() => handleDelete(todo.documentId)}>Verwijderen</button>
+              <button class="btn btn-orange"
+                onClick={() => {
+                  handleChange(todo.documentId);
+                  onEditClick(todo);
+                }}
+              >
                 Wijzig
               </button>
-              <button onClick={(e) => {
-                e.stopPropagation();
-                setSelectedId(null);
-              }}>
+              <button class="btn btn-grey"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setSelectedId(null);
+                }}
+              >
                 Annuleer
               </button>
             </div>

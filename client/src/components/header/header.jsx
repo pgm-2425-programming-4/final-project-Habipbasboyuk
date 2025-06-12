@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "@tanstack/react-router";
 import { fetchProjects, fetchTodos } from "../../queries/data.js";
+import addIcon from '../../assets/icons/add-1-svgrepo-com.svg';
 
 export default function Header({ onAddClick, onProjectSelect }) {
   const [todos, setTodos] = useState([]);
@@ -65,7 +66,7 @@ export default function Header({ onAddClick, onProjectSelect }) {
           </Link>
           <img
             className="icon project-container__button"
-            src="./src/assets/icons/add-1-svgrepo-com.svg"
+            src={addIcon}
             alt="Add task"
             onClick={onAddClick}
           />

@@ -28,6 +28,17 @@
     justify-self: center;
 }
 
+.btn-red {
+    background-color: red;
+}
+
+.btn-orange {
+    background-color: orange;
+}
+
+
+
+
 .btn-form {
     color: white;
 }
@@ -50,4 +61,17 @@
     align-items: center;
     margin-top: auto;
     padding: 0;
+}
+
+.task-card__actions {
+    width: 50%;
+    margin-top: 1rem;
+    display: flex;
+    gap: 0.2rem;
+    margin-right: 1rem;
+    .btn {
+        font-size: 0.5rem;
+        width: max-content;
+        border-radius: 5px;
+    }
 }
