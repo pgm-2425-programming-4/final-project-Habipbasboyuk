@@ -37,7 +37,6 @@ function TaskForm({ onClose, onTaskAdded }) {
 
   try {
  await postTodo(newTask);
- console.log('watisdit')
   onClose();
   if (onTaskAdded) await onTaskAdded();
   } catch (error) {

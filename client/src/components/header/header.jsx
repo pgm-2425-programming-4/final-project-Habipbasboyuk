@@ -64,6 +64,12 @@ export default function Header({ onAddClick, onProjectSelect }) {
           >
             Backlog
           </Link>
+          <Link
+            to="/about"
+            className="btn project-container__button btn-about"
+          >
+            Over
+          </Link>
           <img
             className="icon project-container__button"
             src={addIcon}

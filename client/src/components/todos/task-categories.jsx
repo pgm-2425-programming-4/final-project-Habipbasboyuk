@@ -9,7 +9,6 @@ export default function TaskCondition({ title, todos, onEditClick, onDelete }) {
       await fetch(`${API_URL}/todos/${id}`, {
         method: "DELETE",
       });
-      console.log("Taak verwijderd:", id);
       setSelectedId(null);
       if (onDelete) onDelete(id);
     } catch (err) {
@@ -55,8 +54,8 @@ export default function TaskCondition({ title, todos, onEditClick, onDelete }) {
 
           {selectedId === todo.id && (
             <div className="task-card__actions">
-              <button class="btn btn-red" onClick={() => handleDelete(todo.documentId)}>Verwijderen</button>
-              <button class="btn btn-orange"
+              <button className="btn btn-red" onClick={() => handleDelete(todo.documentId)}>Verwijderen</button>
+              <button className="btn btn-orange"
                 onClick={() => {
                   handleChange(todo.documentId);
                   onEditClick(todo);
@@ -64,7 +63,7 @@ export default function TaskCondition({ title, todos, onEditClick, onDelete }) {
               >
                 Wijzig
               </button>
-              <button class="btn btn-grey"
+              <button className="btn btn-grey"
                 onClick={(e) => {
                   e.stopPropagation();
                   setSelectedId(null);

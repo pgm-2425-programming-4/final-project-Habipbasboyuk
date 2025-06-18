@@ -48,7 +48,7 @@
     color: white;
 }
 
-.btn-backlog {
+.btn-backlog, .btn-about {
     background-color: var(--backlog-button-color);
     color: white !important;
     border-radius: var(--border-radius);
@@ -81,4 +81,8 @@ button.active {
         width: max-content;
         border-radius: 5px;
     }
+}
+
+.btn-about {
+    background-color: red;
 }

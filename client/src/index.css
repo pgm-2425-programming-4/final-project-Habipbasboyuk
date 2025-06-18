@@ -92,3 +92,26 @@ h1, h2, h3, h4, h5, h6, p {
   
 }
 
+.home-text {
+  font-family: 'Spline-Sans';
+  color: var(--text-color);
+  font-weight: var(--font-weight-regular);
+  font-size: 1.5rem;
+  text-align: center;
+  margin-top: var(--m-margin);
+}
+
+.about-page {
+  font-family: 'Spline-Sans';
+  color: var(--text-color);
+  font-weight: var(--font-weight-regular);
+  font-size: 1.5rem;
+  text-align: center;
+  margin-top: var(--m-margin);
+  padding: var(--m-padding);
+
+  li {
+    list-style: none;
+  }
+}
+

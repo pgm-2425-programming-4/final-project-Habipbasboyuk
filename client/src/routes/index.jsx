@@ -10,9 +10,9 @@ function Index() {
     <>
     <Header />
 
-        <div className="p-2">
+        <div className="home-text">
       <h3>Welcome Home!</h3>
-      Chose a project to see your tasks!
+      Kies een project om te starten
     </div>
     </>
 
