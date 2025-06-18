@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { fetchTodos } from "./queries/data";
 
 import Header from "./components/header/header.jsx";
@@ -6,22 +7,21 @@ import TaskCondition from "./components/todos/task-categories.jsx";
 import TaskForm from "./components/form/task-form.jsx";
 import Backlog from "./components/backlog/Backlog";
 import EditTaskForm from "./components/form/edit-task-form.jsx";
+
 function App({ projectId }) {
-  const [todos, setTodos] = useState([]);
+  const queryClient = useQueryClient();
+
+  const { data, isLoading, error } = useQuery({
+    queryKey: ["todos"],
+    queryFn: fetchTodos,
+  });
+
   const [selectedProject, setSelectedProject] = useState(null);
   const [showForm, setShowForm] = useState(false);
   const [showBacklog, setShowBacklog] = useState(false);
   const [editTaskFormActive, setEditTaskFormActive] = useState(null);
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    setLoading(true);
-    fetchTodos().then((data) => {
-      setTodos(data.data);
-      setLoading(false);
-    });
-  }, []);
 
-
+  const todos = data?.data || [];
 
   const filteredTodos = (status) =>
     todos
@@ -36,10 +36,14 @@ function App({ projectId }) {
         return true;
       });
 
-  if (loading) {
-    return <div>Loading...</div>; // of een spinner component
-  }
-  
+  if (isLoading) return <div>Loading...</div>;
+  if (error)
+    return <div>Er is een fout opgetreden bij het laden van de taken.</div>;
+
+  const refetchTodos = async () => {
+    await queryClient.invalidateQueries(["todos"]);
+  };
+
   return (
     <>
       <Header
@@ -60,31 +64,25 @@ function App({ projectId }) {
             title="To do"
             todos={filteredTodos("To do")}
             onEditClick={setEditTaskFormActive}
-            onDelete={(id) =>
-              setTodos((todos) =>
-                todos.filter((todo) => todo.documentId !== id)
-              )
-            }
+            onDelete={async () => {
+              await refetchTodos();
+            }}
           />
           <TaskCondition
             title="In progress"
             todos={filteredTodos("In progress")}
             onEditClick={setEditTaskFormActive}
-            onDelete={(id) =>
-              setTodos((todos) =>
-                todos.filter((todo) => todo.documentId !== id)
-              )
-            }
+            onDelete={async () => {
+              await refetchTodos();
+            }}
           />
           <TaskCondition
             title="Done"
             todos={filteredTodos("Done")}
             onEditClick={setEditTaskFormActive}
-            onDelete={(id) =>
-              setTodos((todos) =>
-                todos.filter((todo) => todo.documentId !== id)
-              )
-            }
+            onDelete={async () => {
+              await refetchTodos();
+            }}
           />
         </article>
       </>
@@ -93,20 +91,14 @@ function App({ projectId }) {
         <EditTaskForm
           task={editTaskFormActive}
           onClose={() => setEditTaskFormActive(null)}
-          onSave={async () => {
-            const data = await fetchTodos();
-            setTodos(data.data);
-          }}
+          onSave={refetchTodos}
         />
       )}
 
       {showForm && (
         <TaskForm
           onClose={() => setShowForm(false)}
-          onTaskAdded={async () => {
-            const data = await fetchTodos();
-            setTodos(data.data);
-          }}
+          onTaskAdded={refetchTodos}
         />
       )}
     </>

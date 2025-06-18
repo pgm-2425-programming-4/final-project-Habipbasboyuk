@@ -9,11 +9,12 @@
   .task-form {
     display: flex;
     flex-direction: column;
-    gap: var(--sm-margin);
+    gap: 1rem;
   }
 
   .task-form__label {
     display: flex;
+    margin-bottom: 1rem;
     align-items: center;
     justify-content: space-between;
   }

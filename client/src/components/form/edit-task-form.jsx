@@ -30,7 +30,7 @@ export default function EditTaskForm({ task, onClose, onSave }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form class="task-form-container" onSubmit={handleSubmit}>
       <label className="task-form__label">
         Taak
         <input

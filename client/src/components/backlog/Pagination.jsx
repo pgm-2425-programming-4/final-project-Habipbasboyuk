@@ -1,4 +1,3 @@
-import React from 'react';
 
 function Pagination({ currentPage, totalPages, onPageChange }) {
   if (totalPages <= 1) return null;
@@ -6,7 +5,7 @@ function Pagination({ currentPage, totalPages, onPageChange }) {
   const pages = [];
   for (let i = 1; i <= totalPages; i++) {
     pages.push(
-      <button
+      <button className="pagination__button"
         key={i}
         onClick={() => onPageChange(i)}
         disabled={i === currentPage}
@@ -20,7 +19,7 @@ function Pagination({ currentPage, totalPages, onPageChange }) {
     );
   }
 
-  return <div>{pages}</div>;
+  return <div className="pagination">{pages}</div>;
 }
 
 export default Pagination;

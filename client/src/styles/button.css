@@ -5,6 +5,11 @@
   cursor: pointer;
 }
 
+.btn-grey, .btn-orange, .btn-red {
+    font-weight: 700;
+    color: white;
+}
+
 .btn-grey {
     background-color: var(--fg-color);
 }
@@ -50,8 +55,8 @@
     padding: var(--m-padding) var(--l-padding);
 }
 
-.active {
-    background-color: antiquewhite;
+button.active {
+  background-color: antiquewhite;
     box-shadow: inset;
 }
 
@@ -67,7 +72,9 @@
     width: 50%;
     margin-top: 1rem;
     display: flex;
+    
     gap: 0.2rem;
+    
     margin-right: 1rem;
     .btn {
         font-size: 0.5rem;

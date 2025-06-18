@@ -17,10 +17,12 @@ fetchBacklog({ page: currentPage, pageSize })
   }, [currentPage]);
 
   return (
-    <div>
-      <ul>
+    <div className="backlog">
+      <ul className="backlog__list">
         {backlog.map(item => (
-          <li key={item.id}>{item.Task || 'No Task'}</li>
+          <li className="backlog__item" key={item.id}>
+            {item.Task || 'Er zijn geen taken'}
+          </li>
         ))}
       </ul>
       <Pagination
